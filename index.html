@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="index.js"></script>
 
     <link rel="stylesheet" href="style.css">
   </head>
@@ -53,9 +54,9 @@
               <div class="row">
                 <div class="col-md-12">
                   <ul class="list-unstyled mb-0">
-                    <li><a href="#">Harry Potter</a></li>
-                    <li><a href="#">Alice in Wonderland</a></li>
-                    <li><a href="#">Lord of the Rings</a></li>
+                    <li><a href="#" onclick="loadBook('harry-potter.txt', 'Harry Potter')">Harry Potter</a></li>
+                    <li><a href="#" onclick="loadBook('aliceInWonderland.txt', 'Alice in Wonderland')">Alice in Wonderland</a></li>
+                    <li><a href="#" onclick="loadBook('lord-of-the-rings.txt', 'Lord of The Rings')">Lord of the Rings</a></li>
                   </ul>
                 </div>
               </div>
@@ -66,18 +67,50 @@
           <div class="card my-4">
             <h5 class="card-header">Most Used Words</h5>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="list-unstyled mb-0" id="mostUsed">
+              <div class="row">
+                <div class="col-md-12">
+                  <ul class="list-unstyled mb-0" id="mostUsed">
 
-                        </ul>
-                    </div>
+                  </ul>
                 </div>
+              </div>
             </div>
           </div>
-        </div>
 
+          <!-- Least Used Words -->
+          <div class="card my-4">
+            <h5 class="card-header">Least Used Words</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-12">
+                  <ul class="list-unstyled mb-0" id="leastUsed">
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Document Stats-->
+          <div class="card my-4">
+            <h5 class="card-header">Document Stats</h5>
+            <div class="card-body">
+              <ul class="list-unstyled mb-0">
+                <li id="docLength"></li>
+                <li id="wordCount"></li>
+                <li id="charCount"></li>
+              </ul>
+            </div>
+          </div>
+      
+        </div>
       </div>
+      <script id="template-ul-items" type="text/template">
+        <li>
+           {{val}}
+        </li>    
+      </script>
+
     </div>
     
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -85,6 +118,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <script src="index.js"></script>
+    
   </body>
 </html>
