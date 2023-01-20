@@ -28,3 +28,19 @@ function loadBook(filename, displayName) {
       }
   };
 }
+
+//get stats for the book
+function getDocStats(fileContent) {
+  var docLength = document.getElementById("docLength"); 
+  var wordCount = document.getElementById("wordCount");
+  var charCount = document.getElementById("charCount");
+
+  let text = fileContent.toLowerCase();
+  let wordArray = text.match(/\b\S+\b/g);
+  let wordDictionary = {};
+
+  var uncommonWords = [];
+
+  //filter out the uncommon words
+  uncommonWords = filterStopWords(wordArray);
+}
