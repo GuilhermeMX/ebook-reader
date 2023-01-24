@@ -43,4 +43,9 @@ function getDocStats(fileContent) {
 
   //filter out the uncommon words
   uncommonWords = filterStopWords(wordArray);
+
+  // count every word in the wordArray
+  for (word in wordArray) {
+    let wordValue = wordArray[word]
+  }
 }
