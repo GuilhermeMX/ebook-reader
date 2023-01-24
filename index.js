@@ -16,7 +16,7 @@ function loadBook(filename, displayName) {
       if (xhr.readyState == 4 && xhr.status == 200) {
           currentBook = xhr.responseText;
 
-          //getDocStats(currentBook);
+          getDocStats(currentBook);
 
           //remove line breaks and carriage returns and replace with a <br>
           currentBook = currentBook.replace(/(?:\r\n|\r|\n)/g, '<br>');
@@ -42,10 +42,52 @@ function getDocStats(fileContent) {
   var uncommonWords = [];
 
   //filter out the uncommon words
-  uncommonWords = filterStopWords(wordArray);
+  //uncommonWords = filterStopWords(wordArray);
 
   // count every word in the wordArray
-  for (word in wordArray) {
-    let wordValue = wordArray[word]
+  for (let word in wordArray) {
+    let wordValue = wordArray[word];
+    if (wordDictionary[wordValue] > 0) {
+      wordDictionary[wordValue] += 1
+    } else {
+      wordDictionary[wordValue] = 1
+    }
   }
+
+  let wordList = sortProperties(wordDictionary);
+
+  // return top 5 words 
+  var top5Words = wordList.slice(0, 6);
+  
+  //return the least 5 words
+  var least5Words = wordList.slice(-6, wordList.length);
+
+  // Write the values to the page
+  ULTemplate(top5Words, document.getElementById("mostUsed"));
+  ULTemplate(least5Words, document.getElementById("leastUsed"));
+
+}
+
+function ULTemplate(items, element) {
+    let rowTemplate = document.getElementById('template-ul-items');
+    let templateHTML = rowTemplate.innerHTML;
+    let resultsHTML = "";
+
+    for (i = 0; i < items.length - 1; i++) {
+        resultsHTML += templateHTML.replace('{{val}}', items[i][0] + " : " + items[i][1] + " time(s)");
+    }
+
+    element.innerHTML = resultsHTML;
+}
+
+function sortProperties(object) {
+  // first convert the object to an array
+  let returnArray = Object.defineProperties(object);
+
+  // sort the array
+  returnArray.sort(function (first, second) {
+    return second[1] - first[1];
+  })
+
+  return returnArray;
 }
