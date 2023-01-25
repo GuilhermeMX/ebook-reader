@@ -84,7 +84,7 @@ function ULTemplate(items, element) {
 
 function sortProperties(object) {
   // first convert the object to an array
-  let returnArray = Object.defineProperties(object);
+  let returnArray = Object.entries(object);
 
   // sort the array
   returnArray.sort(function (first, second) {
